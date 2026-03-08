@@ -10,12 +10,10 @@ body{
 margin:0;
 background:black;
 color:white;
-font-family:Segoe UI;
+font-family:Arial;
 text-align:center;
 overflow:hidden;
 }
-
-/* start screen */
 
 #start{
 position:absolute;
@@ -24,8 +22,6 @@ width:100%;
 font-size:35px;
 cursor:pointer;
 }
-
-/* main screen */
 
 #main{
 display:none;
@@ -45,11 +41,12 @@ border-radius:20px;
 box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* cake animation */
+/* cake */
 
 .cake{
-font-size:70px;
+font-size:80px;
 cursor:pointer;
+transition:0.5s;
 animation:bounce 2s infinite;
 }
 
@@ -120,20 +117,20 @@ to{transform:scale(8);opacity:0}
 <body>
 
 <div id="start" onclick="startSurprise()">
-✨ Tap here for a birthday surprise ✨
+✨ Tap here for birthday surprise ✨
 </div>
 
 <div id="main">
 
-<h1>🎉 Happy Birthday Chandamama 💖</h1>
+<h1>🎉 Happy Birthday 🎉</h1>
 
-<div class="cake" onclick="cutCake()">🎂</div>
+<div class="cake" id="cake" onclick="cutCake()">🎂</div>
 
 <br>
 
 <img id="slide" src="photo1.jpg">
 
-<p>May your day be filled with happiness and beautiful memories ✨</p>
+<p>Wishing you happiness and beautiful memories ✨</p>
 
 <audio id="music" autoplay loop>
 <source src="birthday.mp3" type="audio/mpeg">
@@ -143,18 +140,26 @@ to{transform:scale(8);opacity:0}
 
 <script>
 
-/* start */
-
 function startSurprise(){
 document.getElementById("start").style.display="none";
 document.getElementById("main").style.display="block";
 document.getElementById("music").play();
 }
 
-/* cake cut */
+/* cake cutting */
 
 function cutCake(){
-alert("🎂 Make a wish!");
+
+let cake=document.getElementById("cake");
+
+cake.innerHTML="🍰";
+
+cake.style.transform="scale(1.5)";
+
+setTimeout(()=>{
+cake.style.transform="scale(1)";
+},600);
+
 }
 
 /* slideshow */
