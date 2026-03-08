@@ -29,7 +29,7 @@ flex-direction:column;
 display:flex;
 }
 
-/* title */
+/* title animation */
 
 .title{
 font-size:45px;
@@ -109,11 +109,18 @@ to{transform:translateY(100vh)}
 
 <body>
 
+<!-- Screen 0 -->
+
+<div id="screen0" class="screen active">
+<h1 class="title">✨ Tap here for surprise ✨</h1>
+<button onclick="start()">Start</button>
+</div>
+
 <!-- Screen 1 -->
 
-<div id="screen1" class="screen active">
+<div id="screen1" class="screen">
 <h1 class="title">🎉 Happy Birthday My Chandamama 💖</h1>
-<button onclick="next1()">Tap to start</button>
+<button onclick="next1()">Next</button>
 </div>
 
 <!-- Screen 2 -->
@@ -143,7 +150,14 @@ to{transform:translateY(100vh)}
 
 <script>
 
-/* screen changes */
+/* start surprise */
+
+function start(){
+document.getElementById("screen0").classList.remove("active");
+document.getElementById("screen1").classList.add("active");
+}
+
+/* next screens */
 
 function next1(){
 document.getElementById("screen1").classList.remove("active");
@@ -193,7 +207,7 @@ heart.remove();
 
 },600);
 
-/* confetti rain */
+/* confetti */
 
 setInterval(()=>{
 let c=document.createElement("div");
